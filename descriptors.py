@@ -1,4 +1,4 @@
-class Property:
+class My_Property:
     def __init__(self, fget=None, fset=None, fdel=None, doc=None):
         self.fget = fget
         self.fset = fset
@@ -8,10 +8,9 @@ class Property:
     def __set_name__(self, owner_class, property_name):
         self.property_name = property_name
 
-    def __get__(self, instance, owner):
+    def __get__(self, instance, owner_class):
         if instance is None:
             return self
-        print(instance, "_____", self, "____", owner)
         return self.fget(instance)
 
     def __set__(self, instance, value):
@@ -24,7 +23,4 @@ class Property:
             raise AttributeError("can't delete attribute")
         self.fdel(instance)
 
-
-
-
-
+        
